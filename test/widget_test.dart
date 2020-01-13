@@ -27,4 +27,12 @@ void main() {
     await tester.enterText(textfield, '8');
     expect(find.text('8'), findsOneWidget);
   });
+
+  testWidgets('insert Texfield Sisimiring', (WidgetTester tester) async{
+    await tester.pumpWidget(Luassegitiga());
+    var textfield = find.byKey(Key('Smiring'));
+    expect(textfield, findsOneWidget);
+    await tester.enterText(textfield, '8');
+    expect(find.text('8'), findsOneWidget);
+  });
 }

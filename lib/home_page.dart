@@ -16,19 +16,32 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  var alas = 0, tinggi = 0;
+  var alas = 0, tinggi = 0, sisimiring = 0, hasil2 = 0;
+
+
   double hasil = 0;
 
   
 
   final TextEditingController t1 = new TextEditingController(text: "-");
   final TextEditingController t2 = new TextEditingController(text: "-");
+  final TextEditingController t3 = new TextEditingController(text: "-");
+
 
   void hitungLuas() {
     setState(() {
       alas = int.parse(t1.text);
       tinggi = int.parse(t2.text);
       hasil = 0.5 * alas * tinggi;
+    });
+  }
+
+  void hitungKeliling() {
+    setState(() {
+      alas = int.parse(t1.text);
+      tinggi = int.parse(t2.text);
+      sisimiring = int.parse(t3.text);
+      hasil2 = alas + tinggi + sisimiring;
     });
   }
 
@@ -72,6 +85,12 @@ class _HomepageState extends State<Homepage> {
               controller: t2,
               key: Key('Tinggi'),
             ),
+            new TextFormField(
+              keyboardType: TextInputType.number,
+              decoration: new InputDecoration(hintText: "sisi miring segigita"),
+              controller: t3,
+              key: Key('Smiring'),
+            ),
             new Padding(
               padding: const EdgeInsets.only(top: 10.0),
             ),
@@ -83,6 +102,12 @@ class _HomepageState extends State<Homepage> {
                   color: Colors.greenAccent,
                   onPressed: hitungLuas,
                   key: Key('LSegitiga'),
+                ),
+                new MaterialButton(
+                  child: new Text("Keliling segitiga"),
+                  color: Colors.greenAccent,
+                  onPressed: hitungKeliling,
+                  key: Key('KSegitiga'),
                 ),
               ],
             ),
